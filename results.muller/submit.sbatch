@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #SBATCH -N 16
-#SBATCH -n 1024
+#SBATCH -n 2048
 #SBATCH -C milan
 #SBATCH -q regular
 #SBATCH -t 90:00
@@ -14,6 +14,6 @@ cd $SLURM_JOBID
 python3 ../../bin/iopup.py \
     --config ../config.yml \
     --primary-ppn 32 \
-    --secondary-ppn 64 \
+    --secondary-ppn 128 \
     --step 2 \
     $SCRATCH/ost1

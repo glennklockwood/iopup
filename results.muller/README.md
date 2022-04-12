@@ -9,3 +9,4 @@ Jobid | Primary Workload  | Secondary Workload | PPN(1) | ppn(2) | Clients | Ste
 43470 | write bw (1 MiB)  | write iops         |     64 |     64 |      16 |    2
 43470 | write bw (32 MiB) | write iops         |     64 |     64 |      16 |    2
 43472 | write bw (32 MiB) | write iops         |     32 |     64 |      16 |    2
+43474 | write bw (32 MiB) | write iops         |     32 |    128 |      16 |    2
