@@ -9,7 +9,7 @@ elbencho:
         clean:  "--delfiles"
     pattern_args:
         create: "--block 128m --size 1t"
-        bw:     "--size 1t --block 32m"
+        bw:     "--size 1t --block 64m"
         iops:   "--size 1t --block 4k --rand"
     random_data_args: "--blockvaralgo fast --blockvarpct 0"
     timelimit_args: "--timelimit"
@@ -22,7 +22,7 @@ ior:
         clean:  "-r"
     pattern_args:
         create: "-k -t 128m -b 1g -s 1024"
-        bw:     "-t 32m -b 1g -s 1024"
+        bw:     "-t 64m -b 1g -s 1024"
         iops:   "-t 4k -b 1g -s 1024 -z"
     random_data_args: "-l random"
     timelimit_args: "-D"
