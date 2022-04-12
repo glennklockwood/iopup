@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #SBATCH -N 16
-#SBATCH -n 512
+#SBATCH -n 1024
 #SBATCH -C milan
 #SBATCH -q regular
 #SBATCH -t 90:00
@@ -11,4 +11,9 @@ conda activate iopup
 
 mkdir $SLURM_JOBID
 cd $SLURM_JOBID
-python3 ../../bin/iopup.py --config ../config.yml --ppn 32 --step 2 $SCRATCH/ost1
+python3 ../../bin/iopup.py \
+    --config ../config.yml \
+    --primary-ppn 32 \
+    --secondary-ppn 64 \
+    --step 2 \
+    $SCRATCH/ost1

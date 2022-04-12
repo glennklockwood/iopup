@@ -590,9 +590,11 @@ def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("output_dir", type=str, help="Perform I/O in this directory")
     parser.add_argument("-t", "--test", action="store_true", help="Don't actually run jobs (dry run)")
-    parser.add_argument("-p", "--ppn", type=int, default=16, help="Processes per node (default: 16)")
+    parser.add_argument("-p", "--ppn", type=int, default=None, help="Processes per node (default: detect)")
     parser.add_argument("-c", "--config", type=str, default="config.yml", help="Path to iopup config.yml")
     parser.add_argument("-s", "--step", type=int, default=1, help="Step between successive client count tests (default: 1)")
+    parser.add_argument("--primary-ppn", type=int, default=None, help="Processes per node for primary workload (default: use --ppn)")
+    parser.add_argument("--secondary-ppn", type=int, default=None, help="Processes per node for secondary workload (default: use --ppn)")
     args = parser.parse_args()
     global MPIRUN_BIN
 
@@ -606,10 +608,18 @@ def main(argv=None):
     node_step = -1 * args.step
 
     ppn = args.ppn
-    slurm_ntasks = os.environ.get("SLURM_NTASKS")           # Slurm-ism
-    slurm_nnodes = os.environ.get("SLURM_JOB_NUM_NODES")    # Slurm-ism
-    if slurm_ntasks and slurm_nnodes:                       # Slurm-ism
-        ppn = int(slurm_ntasks) // int(slurm_nnodes)        # Slurm-ism
+    if ppn is None:
+        slurm_ntasks = os.environ.get("SLURM_NTASKS")           # Slurm-ism
+        slurm_nnodes = os.environ.get("SLURM_JOB_NUM_NODES")    # Slurm-ism
+        if slurm_ntasks and slurm_nnodes:                       # Slurm-ism
+            ppn = int(slurm_ntasks) // int(slurm_nnodes)        # Slurm-ism
+
+    ppn_1 = ppn
+    ppn_2 = ppn
+    if args.primary_ppn is not None:
+        ppn_1 = args.primary_ppn
+    if args.secondary_ppn is not None:
+        ppn_2 = args.secondary_ppn
 
     for num_primary in range(num_nodes + node_step, 0, node_step):
         primary_nodes = node_list[:num_primary]
@@ -624,7 +634,7 @@ def main(argv=None):
             output_dir=output_dir_1,
             config=config,
             hosts=primary_nodes,
-            ppn=ppn,
+            ppn=ppn_1,
             timelimit=90,
             random_data=True,
             test=args.test)
@@ -635,7 +645,7 @@ def main(argv=None):
             output_dir=output_dir_2,
             config=config,
             hosts=secondary_nodes,
-            ppn=ppn,
+            ppn=ppn_2,
             timelimit=45,
             random_data=True,
             test=args.test)
