@@ -1,0 +1,105 @@
+2022-04-11 18:06:44,748 INFO Launching quiet write iops on 1 secondary nodes
+2022-04-11 18:06:44,757 INFO Executing: srun --nodelist nid001009 -N 1 -n 16 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:06:44,757 DEBUG Directing stdout to secondary_quiet.7p-1s.43239.out
+2022-04-11 18:06:44,759 DEBUG Directing stderr to secondary_quiet.7p-1s.43239.out
+2022-04-11 18:07:35,717 INFO Finished quiet workload; ran from 2022-04-11 18:06:44.761254 to 2022-04-11 18:07:30.710539 (45.9 seconds)
+2022-04-11 18:07:35,719 INFO Launching noisy write bw on 7 primary nodes
+2022-04-11 18:07:35,724 INFO Launching noisy write iops on 1 secondary nodes
+2022-04-11 18:07:35,725 INFO Executing: srun --nodelist nid001002,nid001003,nid001004,nid001005,nid001006,nid001007,nid001008 -N 7 -n 112 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43239.out
+2022-04-11 18:07:35,725 DEBUG Directing stdout to primary_noisy.7p-1s.43239.out
+2022-04-11 18:07:35,725 DEBUG Directing stderr to primary_noisy.7p-1s.43239.out
+2022-04-11 18:07:50,738 INFO Executing: srun --nodelist nid001009 -N 1 -n 16 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:07:50,741 DEBUG Directing stdout to secondary_noisy.7p-1s.43239.out
+2022-04-11 18:07:50,741 DEBUG Directing stderr to secondary_noisy.7p-1s.43239.out
+2022-04-11 18:09:12,319 INFO Finished noisy workload 0; ran from 2022-04-11 18:07:35.727613 to 2022-04-11 18:09:07.313886 (91.6 seconds)
+2022-04-11 18:09:12,322 INFO Finished noisy workload 1; ran from 2022-04-11 18:07:50.743502 to 2022-04-11 18:08:36.192836 (45.4 seconds)
+2022-04-11 18:09:12,323 INFO Launching quiet write iops on 2 secondary nodes
+2022-04-11 18:09:12,329 INFO Executing: srun --nodelist nid001008,nid001009 -N 2 -n 32 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:09:12,329 DEBUG Directing stdout to secondary_quiet.6p-2s.43239.out
+2022-04-11 18:09:12,329 DEBUG Directing stderr to secondary_quiet.6p-2s.43239.out
+2022-04-11 18:10:05,775 INFO Finished quiet workload; ran from 2022-04-11 18:09:12.331663 to 2022-04-11 18:10:00.769814 (48.4 seconds)
+2022-04-11 18:10:05,778 INFO Launching noisy write bw on 6 primary nodes
+2022-04-11 18:10:05,782 INFO Launching noisy write iops on 2 secondary nodes
+2022-04-11 18:10:05,784 INFO Executing: srun --nodelist nid001002,nid001003,nid001004,nid001005,nid001006,nid001007 -N 6 -n 96 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43239.out
+2022-04-11 18:10:05,784 DEBUG Directing stdout to primary_noisy.6p-2s.43239.out
+2022-04-11 18:10:05,784 DEBUG Directing stderr to primary_noisy.6p-2s.43239.out
+2022-04-11 18:10:20,799 INFO Executing: srun --nodelist nid001008,nid001009 -N 2 -n 32 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:10:20,799 DEBUG Directing stdout to secondary_noisy.6p-2s.43239.out
+2022-04-11 18:10:20,799 DEBUG Directing stderr to secondary_noisy.6p-2s.43239.out
+2022-04-11 18:11:41,805 INFO Finished noisy workload 0; ran from 2022-04-11 18:10:05.786207 to 2022-04-11 18:11:36.799696 (91.0 seconds)
+2022-04-11 18:11:41,807 INFO Finished noisy workload 1; ran from 2022-04-11 18:10:20.802161 to 2022-04-11 18:11:07.864178 (47.1 seconds)
+2022-04-11 18:11:41,809 INFO Launching quiet write iops on 3 secondary nodes
+2022-04-11 18:11:41,814 INFO Executing: srun --nodelist nid001007,nid001008,nid001009 -N 3 -n 48 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:11:41,815 DEBUG Directing stdout to secondary_quiet.5p-3s.43239.out
+2022-04-11 18:11:41,815 DEBUG Directing stderr to secondary_quiet.5p-3s.43239.out
+2022-04-11 18:12:32,655 INFO Finished quiet workload; ran from 2022-04-11 18:11:41.816931 to 2022-04-11 18:12:27.649306 (45.8 seconds)
+2022-04-11 18:12:32,655 INFO Launching noisy write bw on 5 primary nodes
+2022-04-11 18:12:32,660 INFO Launching noisy write iops on 3 secondary nodes
+2022-04-11 18:12:32,681 INFO Executing: srun --nodelist nid001002,nid001003,nid001004,nid001005,nid001006 -N 5 -n 80 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43239.out
+2022-04-11 18:12:32,681 DEBUG Directing stdout to primary_noisy.5p-3s.43239.out
+2022-04-11 18:12:32,681 DEBUG Directing stderr to primary_noisy.5p-3s.43239.out
+2022-04-11 18:12:47,694 INFO Executing: srun --nodelist nid001007,nid001008,nid001009 -N 3 -n 48 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:12:47,694 DEBUG Directing stdout to secondary_noisy.5p-3s.43239.out
+2022-04-11 18:12:47,695 DEBUG Directing stderr to secondary_noisy.5p-3s.43239.out
+2022-04-11 18:14:11,280 INFO Finished noisy workload 0; ran from 2022-04-11 18:12:32.683065 to 2022-04-11 18:14:06.274106 (93.6 seconds)
+2022-04-11 18:14:11,280 INFO Finished noisy workload 1; ran from 2022-04-11 18:12:47.697402 to 2022-04-11 18:13:36.421113 (48.7 seconds)
+2022-04-11 18:14:11,281 INFO Launching quiet write iops on 4 secondary nodes
+2022-04-11 18:14:11,288 INFO Executing: srun --nodelist nid001006,nid001007,nid001008,nid001009 -N 4 -n 64 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:14:11,288 DEBUG Directing stdout to secondary_quiet.4p-4s.43239.out
+2022-04-11 18:14:11,288 DEBUG Directing stderr to secondary_quiet.4p-4s.43239.out
+2022-04-11 18:15:04,840 INFO Finished quiet workload; ran from 2022-04-11 18:14:11.290250 to 2022-04-11 18:14:59.833727 (48.5 seconds)
+2022-04-11 18:15:04,840 INFO Launching noisy write bw on 4 primary nodes
+2022-04-11 18:15:04,844 INFO Launching noisy write iops on 4 secondary nodes
+2022-04-11 18:15:04,845 INFO Executing: srun --nodelist nid001002,nid001003,nid001004,nid001005 -N 4 -n 64 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43239.out
+2022-04-11 18:15:04,845 DEBUG Directing stdout to primary_noisy.4p-4s.43239.out
+2022-04-11 18:15:04,845 DEBUG Directing stderr to primary_noisy.4p-4s.43239.out
+2022-04-11 18:15:19,860 INFO Executing: srun --nodelist nid001006,nid001007,nid001008,nid001009 -N 4 -n 64 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:15:19,861 DEBUG Directing stdout to secondary_noisy.4p-4s.43239.out
+2022-04-11 18:15:19,861 DEBUG Directing stderr to secondary_noisy.4p-4s.43239.out
+2022-04-11 18:16:43,224 INFO Finished noisy workload 0; ran from 2022-04-11 18:15:04.847606 to 2022-04-11 18:16:38.218479 (93.4 seconds)
+2022-04-11 18:16:43,225 INFO Finished noisy workload 1; ran from 2022-04-11 18:15:19.864639 to 2022-04-11 18:16:08.265918 (48.4 seconds)
+2022-04-11 18:16:43,225 INFO Launching quiet write iops on 5 secondary nodes
+2022-04-11 18:16:43,231 INFO Executing: srun --nodelist nid001005,nid001006,nid001007,nid001008,nid001009 -N 5 -n 80 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:16:43,231 DEBUG Directing stdout to secondary_quiet.3p-5s.43239.out
+2022-04-11 18:16:43,231 DEBUG Directing stderr to secondary_quiet.3p-5s.43239.out
+2022-04-11 18:17:37,933 INFO Finished quiet workload; ran from 2022-04-11 18:16:43.233592 to 2022-04-11 18:17:32.926813 (49.7 seconds)
+2022-04-11 18:17:37,933 INFO Launching noisy write bw on 3 primary nodes
+2022-04-11 18:17:37,938 INFO Launching noisy write iops on 5 secondary nodes
+2022-04-11 18:17:37,940 INFO Executing: srun --nodelist nid001002,nid001003,nid001004 -N 3 -n 48 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43239.out
+2022-04-11 18:17:37,940 DEBUG Directing stdout to primary_noisy.3p-5s.43239.out
+2022-04-11 18:17:37,940 DEBUG Directing stderr to primary_noisy.3p-5s.43239.out
+2022-04-11 18:17:52,955 INFO Executing: srun --nodelist nid001005,nid001006,nid001007,nid001008,nid001009 -N 5 -n 80 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:17:52,955 DEBUG Directing stdout to secondary_noisy.3p-5s.43239.out
+2022-04-11 18:17:52,955 DEBUG Directing stderr to secondary_noisy.3p-5s.43239.out
+2022-04-11 18:19:14,441 INFO Finished noisy workload 0; ran from 2022-04-11 18:17:37.942296 to 2022-04-11 18:19:09.434982 (91.5 seconds)
+2022-04-11 18:19:14,441 INFO Finished noisy workload 1; ran from 2022-04-11 18:17:52.957906 to 2022-04-11 18:18:41.425546 (48.5 seconds)
+2022-04-11 18:19:14,442 INFO Launching quiet write iops on 6 secondary nodes
+2022-04-11 18:19:14,448 INFO Executing: srun --nodelist nid001004,nid001005,nid001006,nid001007,nid001008,nid001009 -N 6 -n 96 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:19:14,448 DEBUG Directing stdout to secondary_quiet.2p-6s.43239.out
+2022-04-11 18:19:14,448 DEBUG Directing stderr to secondary_quiet.2p-6s.43239.out
+2022-04-11 18:20:07,981 INFO Finished quiet workload; ran from 2022-04-11 18:19:14.450998 to 2022-04-11 18:20:02.975491 (48.5 seconds)
+2022-04-11 18:20:07,982 INFO Launching noisy write bw on 2 primary nodes
+2022-04-11 18:20:07,986 INFO Launching noisy write iops on 6 secondary nodes
+2022-04-11 18:20:07,988 INFO Executing: srun --nodelist nid001002,nid001003 -N 2 -n 32 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43239.out
+2022-04-11 18:20:07,988 DEBUG Directing stdout to primary_noisy.2p-6s.43239.out
+2022-04-11 18:20:07,988 DEBUG Directing stderr to primary_noisy.2p-6s.43239.out
+2022-04-11 18:20:23,003 INFO Executing: srun --nodelist nid001004,nid001005,nid001006,nid001007,nid001008,nid001009 -N 6 -n 96 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:20:23,003 DEBUG Directing stdout to secondary_noisy.2p-6s.43239.out
+2022-04-11 18:20:23,003 DEBUG Directing stderr to secondary_noisy.2p-6s.43239.out
+2022-04-11 18:21:43,778 INFO Finished noisy workload 0; ran from 2022-04-11 18:20:07.990172 to 2022-04-11 18:21:38.773390 (90.8 seconds)
+2022-04-11 18:21:43,779 INFO Finished noisy workload 1; ran from 2022-04-11 18:20:23.005812 to 2022-04-11 18:21:11.503034 (48.5 seconds)
+2022-04-11 18:21:43,779 INFO Launching quiet write iops on 7 secondary nodes
+2022-04-11 18:21:43,784 INFO Executing: srun --nodelist nid001003,nid001004,nid001005,nid001006,nid001007,nid001008,nid001009 -N 7 -n 112 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:21:43,784 DEBUG Directing stdout to secondary_quiet.1p-7s.43239.out
+2022-04-11 18:21:43,784 DEBUG Directing stderr to secondary_quiet.1p-7s.43239.out
+2022-04-11 18:22:37,390 INFO Finished quiet workload; ran from 2022-04-11 18:21:43.787068 to 2022-04-11 18:22:32.384384 (48.6 seconds)
+2022-04-11 18:22:37,390 INFO Launching noisy write bw on 1 primary nodes
+2022-04-11 18:22:37,394 INFO Launching noisy write iops on 7 secondary nodes
+2022-04-11 18:22:37,396 INFO Executing: srun --nodelist nid001002 -N 1 -n 16 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43239.out
+2022-04-11 18:22:37,396 DEBUG Directing stdout to primary_noisy.1p-7s.43239.out
+2022-04-11 18:22:37,396 DEBUG Directing stderr to primary_noisy.1p-7s.43239.out
+2022-04-11 18:22:52,411 INFO Executing: srun --nodelist nid001003,nid001004,nid001005,nid001006,nid001007,nid001008,nid001009 -N 7 -n 112 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43239.out
+2022-04-11 18:22:52,411 DEBUG Directing stdout to secondary_noisy.1p-7s.43239.out
+2022-04-11 18:22:52,411 DEBUG Directing stderr to secondary_noisy.1p-7s.43239.out
+2022-04-11 18:24:14,005 INFO Finished noisy workload 0; ran from 2022-04-11 18:22:37.398158 to 2022-04-11 18:24:08.998994 (91.6 seconds)
+2022-04-11 18:24:14,005 INFO Finished noisy workload 1; ran from 2022-04-11 18:22:52.414248 to 2022-04-11 18:23:40.979199 (48.6 seconds)

@@ -7,5 +7,6 @@
 
 module swap PrgEnv-gnu
 module load python boost
+conda activate iopup
 
-python3 ../iopup.py $SCRATCH/ost1
+python3 ../bin/iopup.py $SCRATCH/ost1
