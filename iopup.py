@@ -588,19 +588,22 @@ def run_secondary_interference(primary, secondary, delay=15):
 
 def main(argv=None):
     parser = argparse.ArgumentParser()
+    parser.add_argument("output_dir", type=str, help="Perform I/O in this directory")
     parser.add_argument("-t", "--test", action="store_true", help="Don't actually run jobs (dry run)")
+    parser.add_argument("-p", "--ppn", type=int, default=16, help="Processes per node (default: 16)")
+    parser.add_argument("-c", "--config", type=str, default="config.yml", help="Path to iopup config.yml")
     args = parser.parse_args()
     global MPIRUN_BIN
 
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')
 
-    config = load_config("config.yml")
+    config = load_config(args.config)
     MPIRUN_BIN = config.get("mpirun", None)
 
     node_list = get_nodes()
     num_nodes = len(node_list)
 
-    ppn = 16
+    ppn = args.ppn
     slurm_ntasks = os.environ.get("SLURM_NTASKS")           # Slurm-ism
     slurm_nnodes = os.environ.get("SLURM_JOB_NUM_NODES")    # Slurm-ism
     if slurm_ntasks and slurm_nnodes:                       # Slurm-ism
@@ -610,10 +613,13 @@ def main(argv=None):
         primary_nodes = node_list[:num_primary]
         secondary_nodes = node_list[num_primary:]
 
+        output_dir_1 = os.path.join(args.output_dir, "data-primary.{}.out".format(os.environ.get("SLURM_JOBID", os.getpid())))
+        output_dir_2 = os.path.join(args.output_dir, "data-secondary.{}.out".format(os.environ.get("SLURM_JOBID", os.getpid())))
+
 #       primary = ElbenchoLauncher(
 #           output_dir="/vast/glock",
         primary = IorLauncher(
-            output_dir="/vast/glock/data-primary.{}.out".format(os.environ.get("SLURM_JOBID", os.getpid())),
+            output_dir=output_dir_1,
             config=config,
             hosts=primary_nodes,
             ppn=ppn,
@@ -624,7 +630,7 @@ def main(argv=None):
 #       secondary = ElbenchoLauncher(
 #           output_dir="/vast/glock",
         secondary = IorLauncher(
-            output_dir="/vast/glock/data-secondary.{}.out".format(os.environ.get("SLURM_JOBID", os.getpid())),
+            output_dir=output_dir_2,
             config=config,
             hosts=secondary_nodes,
             ppn=ppn,
