@@ -1,0 +1,28 @@
+---
+mpirun: "srun"
+elbencho:
+    binary: "/global/u2/g/glock/src/iopup/src/elbencho/bin.muller/elbencho"
+    common_args: "--threads 1 --files 1 --dirsharing --mkdirs --sync --direct"
+    access_args:
+        write:  "--write"
+        read:   "--read"
+        clean:  "--delfiles"
+    pattern_args:
+        create: "--block 128m --size 1t"
+        bw:     "--size 1t --block 1m"
+        iops:   "--size 1t --block 4k --rand"
+    random_data_args: "--blockvaralgo fast --blockvarpct 0"
+    timelimit_args: "--timelimit"
+ior:
+    binary: "/global/u2/g/glock/src/iopup/src/ior/bin.muller/ior"
+    common_args: "-a posix -F -e -g -vv -C --posix.odirect"
+    access_args:
+        write:  "-w"
+        read:   "-r -k"
+        clean:  "-r"
+    pattern_args:
+        create: "-k -t 128m -b 1g -s 1024"
+        bw:     "-t 1m -b 1g -s 1024"
+        iops:   "-t 4k -b 1g -s 1024 -z"
+    random_data_args: "-l random"
+    timelimit_args: "-D"
