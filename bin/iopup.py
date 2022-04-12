@@ -519,7 +519,7 @@ def run_symmetric_interference(*workloads):
             timestamp[1] - timestamp[0]))
 
 
-def run_secondary_interference(primary, secondary, delay=15):
+def run_interference(primary, secondary, delay=15, which='s'):
     """Runs a secondary benchmark in isolation and against a sustained primary.
 
     Runs the secondary workload in isolation, then runs it in the presence of a
@@ -545,9 +545,23 @@ def run_secondary_interference(primary, secondary, delay=15):
         secondary (dict): Description of the secondary (probe) workload.
         delay (int): Seconds to wait after launching the primary workload before
             secondary workload is started.
+        which (str): "primary" to run the primary in isolation, "secondary" to
+            run secondary in isolation, or "both" to run both in isolation
+            before running the noisy case.
     """
     logger = logging.getLogger(__name__)
     OUTPUT_FILENAME = "{workload}_{contention}.{pnodes:d}p-{snodes:d}s.{jobid}.out"
+
+    which = which.lower()[0]
+    isolated_runs = None
+    if which == 'b':
+        isolated_runs = [primary, secondary]
+    elif which == 'p':
+        isolated_runs = [primary]
+    elif which == 's':
+        isolated_runs = [secondary]
+    if isolated_runs is None:
+        raise ValueError("which must be one of primary secondary both")
 
     # Initialize labels
     for workload in (primary, secondary):
@@ -558,17 +572,18 @@ def run_secondary_interference(primary, secondary, delay=15):
         workload["pnodes"] = primary["nnodes"]
         workload["snodes"] = secondary["nnodes"]
 
-    # Run secondary workload in isolation
-    secondary["contention"] = "quiet"
-    logger.info("Launching {contention} {access} {pattern} on {nnodes} {workload} nodes".format(**secondary))
-    secondary["launcher"].set_stdout(open(OUTPUT_FILENAME.format(**secondary), "a"))
-    secondary["launcher"].set_stderr(secondary["launcher"].get_stdout())
-    timestamps = run_launchers(secondary)
-    logger.info("Finished quiet workload; ran from {} to {} ({:.1f} seconds)".format(
-        datetime.datetime.fromtimestamp(timestamps[0][0]),
-        datetime.datetime.fromtimestamp(timestamps[0][1]),
-        timestamps[0][1] - timestamps[0][0]))
-
+    # Run workload(s) in isolation
+    for workload in isolated_runs:
+        workload["contention"] = "quiet"
+        logger.info("Launching {contention} {access} {pattern} on {nnodes} {workload} nodes".format(**workload))
+        workload["launcher"].set_stdout(open(OUTPUT_FILENAME.format(**workload), "a"))
+        workload["launcher"].set_stderr(workload["launcher"].get_stdout())
+        timestamps = run_launchers(workload)
+        logger.info("Finished {} workload; ran from {} to {} ({:.1f} seconds)".format(
+            workload["contention"],
+            datetime.datetime.fromtimestamp(timestamps[0][0]),
+            datetime.datetime.fromtimestamp(timestamps[0][1]),
+            timestamps[0][1] - timestamps[0][0]))
 
     # Set up appropriate labels for noisy workloads
     for workload in (primary, secondary):
@@ -650,7 +665,7 @@ def main(argv=None):
             random_data=True,
             test=args.test)
 
-        run_secondary_interference(
+        run_interference(
             dict(launcher=primary, workload="primary", access="write", pattern="bw"),
             dict(launcher=secondary, workload="secondary", access="write", pattern="iops"),
         )
