@@ -1,0 +1,178 @@
++ module use /global/common/software/nersc/pm-2022.03.1/extra_modulefiles
+++ /usr/share/lmod/lmod/libexec/lmod bash use /global/common/software/nersc/pm-2022.03.1/extra_modulefiles
++ eval '__LMOD_REF_COUNT_MODULEPATH=/global/common/software/nersc/pm-2022.03.1/extra_modulefiles:2\;/usr/share/lmod/lmod/modulefiles/Core:2\;/opt/cray/pe/lmod/modulefiles/mpi/nvidia/20/ofi/1.0/cray-mpich/8.0:1\;/opt/cray/pe/lmod/modulefiles/comnet/nvidia/20/ofi/1.0:1\;/opt/cray/pe/lmod/modulefiles/compiler/nvidia/20:1\;/opt/cray/pe/lmod/modulefiles/mix_compilers:1\;/opt/cray/pe/lmod/modulefiles/perftools/21.12.0:1\;/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:1\;/opt/cray/pe/lmod/modulefiles/cpu/x86-milan/1.0:1\;/usr/share/modulefiles/Linux:1\;/usr/share/modulefiles/Core:1\;/opt/cray/pe/lmod/modulefiles/core:1\;/opt/cray/pe/lmod/modulefiles/craype-targets/default:1\;/opt/cray/modulefiles:1\;/opt/modulefiles:1\;/global/common/software/nersc/pm-2022.03.1/modulefiles:1;' export '__LMOD_REF_COUNT_MODULEPATH;' 'MODULEPATH=/global/common/software/nersc/pm-2022.03.1/extra_modulefiles:/usr/share/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/mpi/nvidia/20/ofi/1.0/cray-mpich/8.0:/opt/cray/pe/lmod/modulefiles/comnet/nvidia/20/ofi/1.0:/opt/cray/pe/lmod/modulefiles/compiler/nvidia/20:/opt/cray/pe/lmod/modulefiles/mix_compilers:/opt/cray/pe/lmod/modulefiles/perftools/21.12.0:/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-milan/1.0:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/opt/cray/modulefiles:/opt/modulefiles:/global/common/software/nersc/pm-2022.03.1/modulefiles;' export 'MODULEPATH;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbIlByZ0VudiJdPSJQcmdFbnYtbnZpZGlhIixbImNvbXBpbGVyIl09Im52aWRpYSIsWyJjcmF5cGUiXT0iY3JheXBlIixbImNyYXlwZV9jcHUiXT0iY3JheXBlLXg4Ni1taWxhbiIsWyJjcmF5cGVfbmV0d29yayJdPSJjcmF5cGUtbmV0d29yay1vZmkiLFsibXBpIl09ImNyYXktbXBpY2giLH0sbVQ9e1siUHJnRW52LW52aWRpYSJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvcmUvUHJnRW52LW52aWRpYS84LjIuMC5sdWEiLFsiZnVsbE5hbWUiXT0iUHJnRW52LW52aWRpYS84LjIu;' export '_ModuleTable001_;' '_ModuleTable002_=MCIsWyJsb2FkT3JkZXIiXT0xMSxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJQcmdFbnYtbnZpZGlhIix9LFsiY3JheS1kc21tbCJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvcmUvY3JheS1kc21tbC8wLjIuMi5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheS1kc21tbC8wLjIuMiIsWyJsb2FkT3JkZXIiXT04LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImNyYXktZHNtbWwiLH0sWyJjcmF5LWxpYnNjaSJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvcmUvY3JheS1saWJzY2kvMjEuMDguMS4yLmx1;' export '_ModuleTable002_;' '_ModuleTable003_=YSIsWyJmdWxsTmFtZSJdPSJjcmF5LWxpYnNjaS8yMS4wOC4xLjIiLFsibG9hZE9yZGVyIl09MTAscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheS1saWJzY2kiLH0sWyJjcmF5LW1waWNoIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29tbmV0L252aWRpYS8yMC9vZmkvMS4wL2NyYXktbXBpY2gvOC4xLjEzLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5LW1waWNoLzguMS4xMyIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImNyYXktbXBpY2giLH0sY3JheXBlPXtbImZuIl09Ii9vcHQvY3JheS9w;' export '_ModuleTable003_;' '_ModuleTable004_=ZS9sbW9kL21vZHVsZWZpbGVzL2NvcmUvY3JheXBlLzIuNy4xMy5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheXBlLzIuNy4xMyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImNyYXlwZSIsfSxbImNyYXlwZS1uZXR3b3JrLW9maSJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQvY3JheXBlLW5ldHdvcmstb2ZpLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUtbmV0d29yay1vZmkiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJjcmF5cGUt;' export '_ModuleTable004_;' '_ModuleTable005_=bmV0d29yay1vZmkiLH0sWyJjcmF5cGUteDg2LW1pbGFuIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdC9jcmF5cGUteDg2LW1pbGFuLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUteDg2LW1pbGFuIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheXBlLXg4Ni1taWxhbiIsfSxkYXJzaGFuPXtbImZuIl09Ii9nbG9iYWwvY29tbW9uL3NvZnR3YXJlL25lcnNjL3BtLTIwMjIuMDMuMS9leHRyYV9tb2R1bGVmaWxlcy9kYXJzaGFuLzMuMy4xLmx1YSIsWyJmdWxsTmFtZSJdPSJkYXJzaGFuLzMuMy4xIixbImxvYWRPcmRl;' export '_ModuleTable005_;' '_ModuleTable006_=ciJdPTEzLHByb3BUPXt0eXBlXz17WyJpbyJdPTEsfSx9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImRhcnNoYW4iLH0sbGliZmFicmljPXtbImZuIl09Ii9vcHQvY3JheS9tb2R1bGVmaWxlcy9saWJmYWJyaWMvMS4xMS4wLjQuNzUiLFsiZnVsbE5hbWUiXT0ibGliZmFicmljLzEuMTEuMC40Ljc1IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibGliZmFicmljIix9LG52aWRpYT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlL252aWRpYS8yMS4xMS5sdWEiLFsiZnVsbE5hbWUiXT0ibnZpZGlhLzIxLjExIixb;' export '_ModuleTable006_;' '_ModuleTable007_=ImxvYWRPcmRlciJdPTYscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibnZpZGlhIix9LFsicGVyZnRvb2xzLWJhc2UiXT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlL3BlcmZ0b29scy1iYXNlLzIxLjEyLjAubHVhIixbImZ1bGxOYW1lIl09InBlcmZ0b29scy1iYXNlLzIxLjEyLjAiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJwZXJmdG9vbHMtYmFzZSIsfSxweXRob249e1siZm4iXT0iL2dsb2JhbC9jb21tb24vc29mdHdhcmUvbmVyc2MvcG0tMjAyMi4wMy4xL2V4dHJhX21vZHVsZWZpbGVz;' export '_ModuleTable007_;' '_ModuleTable008_=L3B5dGhvbi8zLjktYW5hY29uZGEtMjAyMS4xMS5sdWEiLFsiZnVsbE5hbWUiXT0icHl0aG9uLzMuOS1hbmFjb25kYS0yMDIxLjExIixbImxvYWRPcmRlciJdPTE0LHByb3BUPXt0eXBlXz17WyJkZXYiXT0xLH0sfSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJweXRob24iLH0seGFsdD17WyJmbiJdPSIvZ2xvYmFsL2NvbW1vbi9zb2Z0d2FyZS9uZXJzYy9wbS0yMDIyLjAzLjEvZXh0cmFfbW9kdWxlZmlsZXMveGFsdC8yLjEwLjIiLFsiZnVsbE5hbWUiXT0ieGFsdC8yLjEwLjIiLFsibG9hZE9yZGVyIl09MTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ieGFsdC8yLjEw;' export '_ModuleTable008_;' '_ModuleTable009_=LjIiLH0seHBtZW09e1siZm4iXT0iL29wdC9jcmF5L21vZHVsZWZpbGVzL3hwbWVtLzIuMi40MC0yLjFfNi40X19nM2NmMzMyNS5zaGFzdGEiLFsiZnVsbE5hbWUiXT0ieHBtZW0vMi4yLjQwLTIuMV82LjRfX2czY2YzMzI1LnNoYXN0YSIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InhwbWVtIix9LH0sbXBhdGhBPXsiL2dsb2JhbC9jb21tb24vc29mdHdhcmUvbmVyc2MvcG0tMjAyMi4wMy4xL2V4dHJhX21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL21waS9udmlkaWEvMjAvb2ZpLzEu;' export '_ModuleTable009_;' '_ModuleTable010_=MC9jcmF5LW1waWNoLzguMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvbW5ldC9udmlkaWEvMjAvb2ZpLzEuMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvbXBpbGVyL252aWRpYS8yMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL21peF9jb21waWxlcnMiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9wZXJmdG9vbHMvMjEuMTIuMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL25ldC9vZmkvMS4wIiwiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3B1L3g4Ni1taWxhbi8xLjAiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4IiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlIiwiL29wdC9j;' export '_ModuleTable010_;' '_ModuleTable011_=cmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZSIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQiLCIvb3B0L2NyYXkvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZpbGVzIiwiL2dsb2JhbC9jb21tb24vc29mdHdhcmUvbmVyc2MvcG0tMjAyMi4wMy4xL21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXg6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlOi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmU6L29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZTovb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9k;' export '_ModuleTable011_;' '_ModuleTable012_=ZWZhdWx0Oi9vcHQvY3JheS9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIix9;' export '_ModuleTable012_;' '_ModuleTable_Sz_=12;' export '_ModuleTable_Sz_;'
+++ __LMOD_REF_COUNT_MODULEPATH='/global/common/software/nersc/pm-2022.03.1/extra_modulefiles:2;/usr/share/lmod/lmod/modulefiles/Core:2;/opt/cray/pe/lmod/modulefiles/mpi/nvidia/20/ofi/1.0/cray-mpich/8.0:1;/opt/cray/pe/lmod/modulefiles/comnet/nvidia/20/ofi/1.0:1;/opt/cray/pe/lmod/modulefiles/compiler/nvidia/20:1;/opt/cray/pe/lmod/modulefiles/mix_compilers:1;/opt/cray/pe/lmod/modulefiles/perftools/21.12.0:1;/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:1;/opt/cray/pe/lmod/modulefiles/cpu/x86-milan/1.0:1;/usr/share/modulefiles/Linux:1;/usr/share/modulefiles/Core:1;/opt/cray/pe/lmod/modulefiles/core:1;/opt/cray/pe/lmod/modulefiles/craype-targets/default:1;/opt/cray/modulefiles:1;/opt/modulefiles:1;/global/common/software/nersc/pm-2022.03.1/modulefiles:1'
+++ export __LMOD_REF_COUNT_MODULEPATH
+++ MODULEPATH=/global/common/software/nersc/pm-2022.03.1/extra_modulefiles:/usr/share/lmod/lmod/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/mpi/nvidia/20/ofi/1.0/cray-mpich/8.0:/opt/cray/pe/lmod/modulefiles/comnet/nvidia/20/ofi/1.0:/opt/cray/pe/lmod/modulefiles/compiler/nvidia/20:/opt/cray/pe/lmod/modulefiles/mix_compilers:/opt/cray/pe/lmod/modulefiles/perftools/21.12.0:/opt/cray/pe/lmod/modulefiles/net/ofi/1.0:/opt/cray/pe/lmod/modulefiles/cpu/x86-milan/1.0:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/opt/cray/pe/lmod/modulefiles/core:/opt/cray/pe/lmod/modulefiles/craype-targets/default:/opt/cray/modulefiles:/opt/modulefiles:/global/common/software/nersc/pm-2022.03.1/modulefiles
+++ export MODULEPATH
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbIlByZ0VudiJdPSJQcmdFbnYtbnZpZGlhIixbImNvbXBpbGVyIl09Im52aWRpYSIsWyJjcmF5cGUiXT0iY3JheXBlIixbImNyYXlwZV9jcHUiXT0iY3JheXBlLXg4Ni1taWxhbiIsWyJjcmF5cGVfbmV0d29yayJdPSJjcmF5cGUtbmV0d29yay1vZmkiLFsibXBpIl09ImNyYXktbXBpY2giLH0sbVQ9e1siUHJnRW52LW52aWRpYSJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvcmUvUHJnRW52LW52aWRpYS84LjIuMC5sdWEiLFsiZnVsbE5hbWUiXT0iUHJnRW52LW52aWRpYS84LjIu
+++ export _ModuleTable001_
+++ _ModuleTable002_=MCIsWyJsb2FkT3JkZXIiXT0xMSxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJQcmdFbnYtbnZpZGlhIix9LFsiY3JheS1kc21tbCJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvcmUvY3JheS1kc21tbC8wLjIuMi5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheS1kc21tbC8wLjIuMiIsWyJsb2FkT3JkZXIiXT04LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImNyYXktZHNtbWwiLH0sWyJjcmF5LWxpYnNjaSJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvcmUvY3JheS1saWJzY2kvMjEuMDguMS4yLmx1
+++ export _ModuleTable002_
+++ _ModuleTable003_=YSIsWyJmdWxsTmFtZSJdPSJjcmF5LWxpYnNjaS8yMS4wOC4xLjIiLFsibG9hZE9yZGVyIl09MTAscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheS1saWJzY2kiLH0sWyJjcmF5LW1waWNoIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29tbmV0L252aWRpYS8yMC9vZmkvMS4wL2NyYXktbXBpY2gvOC4xLjEzLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5LW1waWNoLzguMS4xMyIsWyJsb2FkT3JkZXIiXT05LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImNyYXktbXBpY2giLH0sY3JheXBlPXtbImZuIl09Ii9vcHQvY3JheS9w
+++ export _ModuleTable003_
+++ _ModuleTable004_=ZS9sbW9kL21vZHVsZWZpbGVzL2NvcmUvY3JheXBlLzIuNy4xMy5sdWEiLFsiZnVsbE5hbWUiXT0iY3JheXBlLzIuNy4xMyIsWyJsb2FkT3JkZXIiXT03LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTEsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImNyYXlwZSIsfSxbImNyYXlwZS1uZXR3b3JrLW9maSJdPXtbImZuIl09Ii9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQvY3JheXBlLW5ldHdvcmstb2ZpLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUtbmV0d29yay1vZmkiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJjcmF5cGUt
+++ export _ModuleTable004_
+++ _ModuleTable005_=bmV0d29yay1vZmkiLH0sWyJjcmF5cGUteDg2LW1pbGFuIl09e1siZm4iXT0iL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3JheXBlLXRhcmdldHMvZGVmYXVsdC9jcmF5cGUteDg2LW1pbGFuLmx1YSIsWyJmdWxsTmFtZSJdPSJjcmF5cGUteDg2LW1pbGFuIixbImxvYWRPcmRlciJdPTEscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3JheXBlLXg4Ni1taWxhbiIsfSxkYXJzaGFuPXtbImZuIl09Ii9nbG9iYWwvY29tbW9uL3NvZnR3YXJlL25lcnNjL3BtLTIwMjIuMDMuMS9leHRyYV9tb2R1bGVmaWxlcy9kYXJzaGFuLzMuMy4xLmx1YSIsWyJmdWxsTmFtZSJdPSJkYXJzaGFuLzMuMy4xIixbImxvYWRPcmRl
+++ export _ModuleTable005_
+++ _ModuleTable006_=ciJdPTEzLHByb3BUPXt0eXBlXz17WyJpbyJdPTEsfSx9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImRhcnNoYW4iLH0sbGliZmFicmljPXtbImZuIl09Ii9vcHQvY3JheS9tb2R1bGVmaWxlcy9saWJmYWJyaWMvMS4xMS4wLjQuNzUiLFsiZnVsbE5hbWUiXT0ibGliZmFicmljLzEuMTEuMC40Ljc1IixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibGliZmFicmljIix9LG52aWRpYT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlL252aWRpYS8yMS4xMS5sdWEiLFsiZnVsbE5hbWUiXT0ibnZpZGlhLzIxLjExIixb
+++ export _ModuleTable006_
+++ _ModuleTable007_=ImxvYWRPcmRlciJdPTYscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MSxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ibnZpZGlhIix9LFsicGVyZnRvb2xzLWJhc2UiXT17WyJmbiJdPSIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jb3JlL3BlcmZ0b29scy1iYXNlLzIxLjEyLjAubHVhIixbImZ1bGxOYW1lIl09InBlcmZ0b29scy1iYXNlLzIxLjEyLjAiLFsibG9hZE9yZGVyIl09NCxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJwZXJmdG9vbHMtYmFzZSIsfSxweXRob249e1siZm4iXT0iL2dsb2JhbC9jb21tb24vc29mdHdhcmUvbmVyc2MvcG0tMjAyMi4wMy4xL2V4dHJhX21vZHVsZWZpbGVz
+++ export _ModuleTable007_
+++ _ModuleTable008_=L3B5dGhvbi8zLjktYW5hY29uZGEtMjAyMS4xMS5sdWEiLFsiZnVsbE5hbWUiXT0icHl0aG9uLzMuOS1hbmFjb25kYS0yMDIxLjExIixbImxvYWRPcmRlciJdPTE0LHByb3BUPXt0eXBlXz17WyJkZXYiXT0xLH0sfSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJweXRob24iLH0seGFsdD17WyJmbiJdPSIvZ2xvYmFsL2NvbW1vbi9zb2Z0d2FyZS9uZXJzYy9wbS0yMDIyLjAzLjEvZXh0cmFfbW9kdWxlZmlsZXMveGFsdC8yLjEwLjIiLFsiZnVsbE5hbWUiXT0ieGFsdC8yLjEwLjIiLFsibG9hZE9yZGVyIl09MTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ieGFsdC8yLjEw
+++ export _ModuleTable008_
+++ _ModuleTable009_=LjIiLH0seHBtZW09e1siZm4iXT0iL29wdC9jcmF5L21vZHVsZWZpbGVzL3hwbWVtLzIuMi40MC0yLjFfNi40X19nM2NmMzMyNS5zaGFzdGEiLFsiZnVsbE5hbWUiXT0ieHBtZW0vMi4yLjQwLTIuMV82LjRfX2czY2YzMzI1LnNoYXN0YSIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InhwbWVtIix9LH0sbXBhdGhBPXsiL2dsb2JhbC9jb21tb24vc29mdHdhcmUvbmVyc2MvcG0tMjAyMi4wMy4xL2V4dHJhX21vZHVsZWZpbGVzIiwiL3Vzci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL21waS9udmlkaWEvMjAvb2ZpLzEu
+++ export _ModuleTable009_
+++ _ModuleTable010_=MC9jcmF5LW1waWNoLzguMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvbW5ldC9udmlkaWEvMjAvb2ZpLzEuMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NvbXBpbGVyL252aWRpYS8yMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL21peF9jb21waWxlcnMiLCIvb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9wZXJmdG9vbHMvMjEuMTIuMCIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL25ldC9vZmkvMS4wIiwiL29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY3B1L3g4Ni1taWxhbi8xLjAiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0xpbnV4IiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlIiwiL29wdC9j
+++ export _ModuleTable010_
+++ _ModuleTable011_=cmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZSIsIi9vcHQvY3JheS9wZS9sbW9kL21vZHVsZWZpbGVzL2NyYXlwZS10YXJnZXRzL2RlZmF1bHQiLCIvb3B0L2NyYXkvbW9kdWxlZmlsZXMiLCIvb3B0L21vZHVsZWZpbGVzIiwiL2dsb2JhbC9jb21tb24vc29mdHdhcmUvbmVyc2MvcG0tMjAyMi4wMy4xL21vZHVsZWZpbGVzIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXg6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9Db3JlOi91c3Ivc2hhcmUvbG1vZC9sbW9kL21vZHVsZWZpbGVzL0NvcmU6L29wdC9jcmF5L3BlL2xtb2QvbW9kdWxlZmlsZXMvY29yZTovb3B0L2NyYXkvcGUvbG1vZC9tb2R1bGVmaWxlcy9jcmF5cGUtdGFyZ2V0cy9k
+++ export _ModuleTable011_
+++ _ModuleTable012_=ZWZhdWx0Oi9vcHQvY3JheS9tb2R1bGVmaWxlczovb3B0L21vZHVsZWZpbGVzIix9
+++ export _ModuleTable012_
+++ _ModuleTable_Sz_=12
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ module load PrgEnv-gnu boost python
+++ /usr/share/lmod/lmod/libexec/lmod bash load PrgEnv-gnu boost python
+
+Lmod is automatically replacing "nvidia/21.11" with "gcc/11.2.0".
+
+
+Lmod is automatically replacing "PrgEnv-nvidia/8.2.0" with "PrgEnv-gnu/8.2.0".
+
+Lmod has detected the following error: Warning: Python module not loaded, you
+already have Python loaded via conda init. 
+While processing the following module(s):
+    Module fullname              Module Filename
+    ---------------              ---------------
+    python/3.9-anaconda-2021.11  /global/common/software/nersc/pm-2022.03.1/extra_modulefiles/python/3.9-anaconda-2021.11.lua
+
++ eval false
+++ false
++ conda activate iopup
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
++ set +x
+2022-04-12 11:01:07,443 INFO Launching quiet write iops on 2 secondary nodes
+2022-04-12 11:01:07,467 INFO Executing: srun --nodelist nid001014,nid001015 -N 2 -n 64 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:01:07,468 DEBUG Directing stdout to secondary_quiet.14p-2s.43449.out
+2022-04-12 11:01:07,468 DEBUG Directing stderr to secondary_quiet.14p-2s.43449.out
+2022-04-12 11:02:05,319 INFO Finished quiet workload; ran from 2022-04-12 11:01:07.475159 to 2022-04-12 11:02:00.311877 (52.8 seconds)
+2022-04-12 11:02:05,321 INFO Launching noisy write bw on 14 primary nodes
+2022-04-12 11:02:05,328 INFO Launching noisy write iops on 2 secondary nodes
+2022-04-12 11:02:05,330 INFO Executing: srun --nodelist nid001000,nid001001,nid001002,nid001003,nid001004,nid001005,nid001006,nid001007,nid001008,nid001009,nid001010,nid001011,nid001012,nid001013 -N 14 -n 448 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43449.out
+2022-04-12 11:02:05,331 DEBUG Directing stdout to primary_noisy.14p-2s.43449.out
+2022-04-12 11:02:05,331 DEBUG Directing stderr to primary_noisy.14p-2s.43449.out
+2022-04-12 11:02:20,346 INFO Executing: srun --nodelist nid001014,nid001015 -N 2 -n 64 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:02:20,349 DEBUG Directing stdout to secondary_noisy.14p-2s.43449.out
+2022-04-12 11:02:20,349 DEBUG Directing stderr to secondary_noisy.14p-2s.43449.out
+2022-04-12 11:03:55,586 INFO Finished noisy workload 0; ran from 2022-04-12 11:02:05.332847 to 2022-04-12 11:03:50.579644 (105.2 seconds)
+2022-04-12 11:03:55,587 INFO Finished noisy workload 1; ran from 2022-04-12 11:02:20.351271 to 2022-04-12 11:03:06.358335 (46.0 seconds)
+2022-04-12 11:03:55,588 INFO Launching quiet write iops on 4 secondary nodes
+2022-04-12 11:03:55,595 INFO Executing: srun --nodelist nid001012,nid001013,nid001014,nid001015 -N 4 -n 128 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:03:55,595 DEBUG Directing stdout to secondary_quiet.12p-4s.43449.out
+2022-04-12 11:03:55,595 DEBUG Directing stderr to secondary_quiet.12p-4s.43449.out
+2022-04-12 11:04:49,366 INFO Finished quiet workload; ran from 2022-04-12 11:03:55.597770 to 2022-04-12 11:04:44.359850 (48.8 seconds)
+2022-04-12 11:04:49,368 INFO Launching noisy write bw on 12 primary nodes
+2022-04-12 11:04:49,372 INFO Launching noisy write iops on 4 secondary nodes
+2022-04-12 11:04:49,374 INFO Executing: srun --nodelist nid001000,nid001001,nid001002,nid001003,nid001004,nid001005,nid001006,nid001007,nid001008,nid001009,nid001010,nid001011 -N 12 -n 384 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43449.out
+2022-04-12 11:04:49,374 DEBUG Directing stdout to primary_noisy.12p-4s.43449.out
+2022-04-12 11:04:49,374 DEBUG Directing stderr to primary_noisy.12p-4s.43449.out
+2022-04-12 11:05:04,389 INFO Executing: srun --nodelist nid001012,nid001013,nid001014,nid001015 -N 4 -n 128 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:05:04,390 DEBUG Directing stdout to secondary_noisy.12p-4s.43449.out
+2022-04-12 11:05:04,390 DEBUG Directing stderr to secondary_noisy.12p-4s.43449.out
+2022-04-12 11:06:31,609 INFO Finished noisy workload 0; ran from 2022-04-12 11:04:49.376527 to 2022-04-12 11:06:26.602878 (97.2 seconds)
+2022-04-12 11:06:31,609 INFO Finished noisy workload 1; ran from 2022-04-12 11:05:04.392600 to 2022-04-12 11:05:54.232164 (49.8 seconds)
+2022-04-12 11:06:31,610 INFO Launching quiet write iops on 6 secondary nodes
+2022-04-12 11:06:31,617 INFO Executing: srun --nodelist nid001010,nid001011,nid001012,nid001013,nid001014,nid001015 -N 6 -n 192 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:06:31,617 DEBUG Directing stdout to secondary_quiet.10p-6s.43449.out
+2022-04-12 11:06:31,617 DEBUG Directing stderr to secondary_quiet.10p-6s.43449.out
+2022-04-12 11:07:26,483 INFO Finished quiet workload; ran from 2022-04-12 11:06:31.619619 to 2022-04-12 11:07:21.477165 (49.9 seconds)
+2022-04-12 11:07:26,483 INFO Launching noisy write bw on 10 primary nodes
+2022-04-12 11:07:26,489 INFO Launching noisy write iops on 6 secondary nodes
+2022-04-12 11:07:26,536 INFO Executing: srun --nodelist nid001000,nid001001,nid001002,nid001003,nid001004,nid001005,nid001006,nid001007,nid001008,nid001009 -N 10 -n 320 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43449.out
+2022-04-12 11:07:26,536 DEBUG Directing stdout to primary_noisy.10p-6s.43449.out
+2022-04-12 11:07:26,536 DEBUG Directing stderr to primary_noisy.10p-6s.43449.out
+2022-04-12 11:07:41,551 INFO Executing: srun --nodelist nid001010,nid001011,nid001012,nid001013,nid001014,nid001015 -N 6 -n 192 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:07:41,551 DEBUG Directing stdout to secondary_noisy.10p-6s.43449.out
+2022-04-12 11:07:41,552 DEBUG Directing stderr to secondary_noisy.10p-6s.43449.out
+2022-04-12 11:09:08,844 INFO Finished noisy workload 0; ran from 2022-04-12 11:07:26.538230 to 2022-04-12 11:09:03.838085 (97.3 seconds)
+2022-04-12 11:09:08,845 INFO Finished noisy workload 1; ran from 2022-04-12 11:07:41.554117 to 2022-04-12 11:08:32.683111 (51.1 seconds)
+2022-04-12 11:09:08,845 INFO Launching quiet write iops on 8 secondary nodes
+2022-04-12 11:09:08,851 INFO Executing: srun --nodelist nid001008,nid001009,nid001010,nid001011,nid001012,nid001013,nid001014,nid001015 -N 8 -n 256 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:09:08,851 DEBUG Directing stdout to secondary_quiet.8p-8s.43449.out
+2022-04-12 11:09:08,851 DEBUG Directing stderr to secondary_quiet.8p-8s.43449.out
+2022-04-12 11:10:02,764 INFO Finished quiet workload; ran from 2022-04-12 11:09:08.853336 to 2022-04-12 11:09:57.757604 (48.9 seconds)
+2022-04-12 11:10:02,765 INFO Launching noisy write bw on 8 primary nodes
+2022-04-12 11:10:02,770 INFO Launching noisy write iops on 8 secondary nodes
+2022-04-12 11:10:02,771 INFO Executing: srun --nodelist nid001000,nid001001,nid001002,nid001003,nid001004,nid001005,nid001006,nid001007 -N 8 -n 256 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43449.out
+2022-04-12 11:10:02,771 DEBUG Directing stdout to primary_noisy.8p-8s.43449.out
+2022-04-12 11:10:02,772 DEBUG Directing stderr to primary_noisy.8p-8s.43449.out
+2022-04-12 11:10:17,786 INFO Executing: srun --nodelist nid001008,nid001009,nid001010,nid001011,nid001012,nid001013,nid001014,nid001015 -N 8 -n 256 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:10:17,787 DEBUG Directing stdout to secondary_noisy.8p-8s.43449.out
+2022-04-12 11:10:17,787 DEBUG Directing stderr to secondary_noisy.8p-8s.43449.out
+2022-04-12 11:11:45,461 INFO Finished noisy workload 0; ran from 2022-04-12 11:10:02.773588 to 2022-04-12 11:11:40.455478 (97.7 seconds)
+2022-04-12 11:11:45,462 INFO Finished noisy workload 1; ran from 2022-04-12 11:10:17.789485 to 2022-04-12 11:11:08.489870 (50.7 seconds)
+2022-04-12 11:11:45,462 INFO Launching quiet write iops on 10 secondary nodes
+2022-04-12 11:11:45,470 INFO Executing: srun --nodelist nid001006,nid001007,nid001008,nid001009,nid001010,nid001011,nid001012,nid001013,nid001014,nid001015 -N 10 -n 320 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:11:45,470 DEBUG Directing stdout to secondary_quiet.6p-10s.43449.out
+2022-04-12 11:11:45,470 DEBUG Directing stderr to secondary_quiet.6p-10s.43449.out
+2022-04-12 11:12:43,039 INFO Finished quiet workload; ran from 2022-04-12 11:11:45.472522 to 2022-04-12 11:12:38.032573 (52.6 seconds)
+2022-04-12 11:12:43,042 INFO Launching noisy write bw on 6 primary nodes
+2022-04-12 11:12:43,047 INFO Launching noisy write iops on 10 secondary nodes
+2022-04-12 11:12:43,048 INFO Executing: srun --nodelist nid001000,nid001001,nid001002,nid001003,nid001004,nid001005 -N 6 -n 192 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43449.out
+2022-04-12 11:12:43,049 DEBUG Directing stdout to primary_noisy.6p-10s.43449.out
+2022-04-12 11:12:43,049 DEBUG Directing stderr to primary_noisy.6p-10s.43449.out
+2022-04-12 11:12:58,064 INFO Executing: srun --nodelist nid001006,nid001007,nid001008,nid001009,nid001010,nid001011,nid001012,nid001013,nid001014,nid001015 -N 10 -n 320 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:12:58,067 DEBUG Directing stdout to secondary_noisy.6p-10s.43449.out
+2022-04-12 11:12:58,067 DEBUG Directing stderr to secondary_noisy.6p-10s.43449.out
+2022-04-12 11:14:21,904 INFO Finished noisy workload 0; ran from 2022-04-12 11:12:43.050829 to 2022-04-12 11:14:16.897441 (93.8 seconds)
+2022-04-12 11:14:21,907 INFO Finished noisy workload 1; ran from 2022-04-12 11:12:58.069227 to 2022-04-12 11:13:49.571328 (51.5 seconds)
+2022-04-12 11:14:21,907 INFO Launching quiet write iops on 12 secondary nodes
+2022-04-12 11:14:21,912 INFO Executing: srun --nodelist nid001004,nid001005,nid001006,nid001007,nid001008,nid001009,nid001010,nid001011,nid001012,nid001013,nid001014,nid001015 -N 12 -n 384 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:14:21,912 DEBUG Directing stdout to secondary_quiet.4p-12s.43449.out
+2022-04-12 11:14:21,912 DEBUG Directing stderr to secondary_quiet.4p-12s.43449.out
+2022-04-12 11:15:16,177 INFO Finished quiet workload; ran from 2022-04-12 11:14:21.914708 to 2022-04-12 11:15:11.172006 (49.3 seconds)
+2022-04-12 11:15:16,180 INFO Launching noisy write bw on 4 primary nodes
+2022-04-12 11:15:16,185 INFO Launching noisy write iops on 12 secondary nodes
+2022-04-12 11:15:16,186 INFO Executing: srun --nodelist nid001000,nid001001,nid001002,nid001003 -N 4 -n 128 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43449.out
+2022-04-12 11:15:16,186 DEBUG Directing stdout to primary_noisy.4p-12s.43449.out
+2022-04-12 11:15:16,186 DEBUG Directing stderr to primary_noisy.4p-12s.43449.out
+2022-04-12 11:15:31,202 INFO Executing: srun --nodelist nid001004,nid001005,nid001006,nid001007,nid001008,nid001009,nid001010,nid001011,nid001012,nid001013,nid001014,nid001015 -N 12 -n 384 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:15:31,205 DEBUG Directing stdout to secondary_noisy.4p-12s.43449.out
+2022-04-12 11:15:31,205 DEBUG Directing stderr to secondary_noisy.4p-12s.43449.out
+2022-04-12 11:16:54,843 INFO Finished noisy workload 0; ran from 2022-04-12 11:15:16.188926 to 2022-04-12 11:16:49.837569 (93.6 seconds)
+2022-04-12 11:16:54,846 INFO Finished noisy workload 1; ran from 2022-04-12 11:15:31.207249 to 2022-04-12 11:16:21.921221 (50.7 seconds)
+2022-04-12 11:16:54,847 INFO Launching quiet write iops on 14 secondary nodes
+2022-04-12 11:16:54,854 INFO Executing: srun --nodelist nid001002,nid001003,nid001004,nid001005,nid001006,nid001007,nid001008,nid001009,nid001010,nid001011,nid001012,nid001013,nid001014,nid001015 -N 14 -n 448 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:16:54,854 DEBUG Directing stdout to secondary_quiet.2p-14s.43449.out
+2022-04-12 11:16:54,854 DEBUG Directing stderr to secondary_quiet.2p-14s.43449.out
+2022-04-12 11:17:52,853 INFO Finished quiet workload; ran from 2022-04-12 11:16:54.856714 to 2022-04-12 11:17:47.846606 (53.0 seconds)
+2022-04-12 11:17:52,855 INFO Launching noisy write bw on 2 primary nodes
+2022-04-12 11:17:52,859 INFO Launching noisy write iops on 14 secondary nodes
+2022-04-12 11:17:52,909 INFO Executing: srun --nodelist nid001000,nid001001 -N 2 -n 64 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 1m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43449.out
+2022-04-12 11:17:52,909 DEBUG Directing stdout to primary_noisy.2p-14s.43449.out
+2022-04-12 11:17:52,909 DEBUG Directing stderr to primary_noisy.2p-14s.43449.out
+2022-04-12 11:18:07,921 INFO Executing: srun --nodelist nid001002,nid001003,nid001004,nid001005,nid001006,nid001007,nid001008,nid001009,nid001010,nid001011,nid001012,nid001013,nid001014,nid001015 -N 14 -n 448 /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 45 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 4k -b 1g -s 1024 -z -o /mscratch/sd/g/glock/ost1/data-secondary.43449.out
+2022-04-12 11:18:07,923 DEBUG Directing stdout to secondary_noisy.2p-14s.43449.out
+2022-04-12 11:18:07,923 DEBUG Directing stderr to secondary_noisy.2p-14s.43449.out
+2022-04-12 11:19:31,417 INFO Finished noisy workload 0; ran from 2022-04-12 11:17:52.911625 to 2022-04-12 11:19:26.414095 (93.5 seconds)
+2022-04-12 11:19:31,420 INFO Finished noisy workload 1; ran from 2022-04-12 11:18:07.926126 to 2022-04-12 11:18:57.111295 (49.2 seconds)
