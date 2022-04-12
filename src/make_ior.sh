@@ -4,12 +4,14 @@ if [[ $NERSC_HOST == "muller" ]]; then
     module swap PrgEnv-gnu
 
     if [ ! -d "ior" ]; then
-        git clone git@github.com:hpc/ior.git
+        # git clone git@github.com:hpc/ior.git
+        git clone git@github.com:glennklockwood/ior.git
     fi
 
     cd ior
 
-    git checkout 0410a38e985e0862a9fd9abec017abffc4c5fc43
+    # git checkout 0410a38e985e0862a9fd9abec017abffc4c5fc43
+    git checkout feature/incompress
 
     if [ ! -f "configure" ]; then
         ./bootstrap
