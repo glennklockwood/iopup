@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-#SBATCH -N 8
-#SBATCH -n 128
+#SBATCH -N 16
+#SBATCH -n 512
 #SBATCH -C milan
 #SBATCH -q regular
 #SBATCH -t 90:00
 
-module swap PrgEnv-gnu
-module load python boost
+module use "/global/common/software/nersc/pm-2022.03.1/extra_modulefiles"
+module load PrgEnv-gnu boost python
 conda activate iopup
 
-python3 ../bin/iopup.py $SCRATCH/ost1
+mkdir $SLURM_JOBID
+cd $SLURM_JOBID
+python3 ../../bin/iopup.py --config ../config.yml --ppn 32 --step 2 $SCRATCH/ost1
