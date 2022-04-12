@@ -592,6 +592,7 @@ def main(argv=None):
     parser.add_argument("-t", "--test", action="store_true", help="Don't actually run jobs (dry run)")
     parser.add_argument("-p", "--ppn", type=int, default=16, help="Processes per node (default: 16)")
     parser.add_argument("-c", "--config", type=str, default="config.yml", help="Path to iopup config.yml")
+    parser.add_argument("-s", "--step", type=int, default=1, help="Step between successive client count tests (default: 1)")
     args = parser.parse_args()
     global MPIRUN_BIN
 
@@ -602,6 +603,7 @@ def main(argv=None):
 
     node_list = get_nodes()
     num_nodes = len(node_list)
+    node_step = -1 * args.step
 
     ppn = args.ppn
     slurm_ntasks = os.environ.get("SLURM_NTASKS")           # Slurm-ism
@@ -609,7 +611,7 @@ def main(argv=None):
     if slurm_ntasks and slurm_nnodes:                       # Slurm-ism
         ppn = int(slurm_ntasks) // int(slurm_nnodes)        # Slurm-ism
 
-    for num_primary in range(num_nodes-1, 0, -1):
+    for num_primary in range(num_nodes + node_step, 0, node_step):
         primary_nodes = node_list[:num_primary]
         secondary_nodes = node_list[num_primary:]
 
