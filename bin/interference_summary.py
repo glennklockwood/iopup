@@ -10,7 +10,7 @@ import numpy
 import pandas
 
 from n10ioana.load import load_contention_dataset
-from n10ioana.contention import validate_contention_dataset, IncompleteDatasetError
+from n10ioana.contention import validate_contention_dataset, IncompleteDatasetError, JobOverlapError
 
 def load_contention_datasets(*filenames):
     input_files = []
@@ -72,7 +72,7 @@ if __name__ == "__main__":
 
     try:
         validate_contention_dataset(results)
-    except IncompleteDatasetError as err:
+    except (IncompleteDatasetError, JobOverlapError) as err:
         warnings.warn(str(err))
 
     if results is None:
@@ -85,7 +85,8 @@ if __name__ == "__main__":
     with pandas.option_context('display.max_rows', None, 'display.max_columns', None):
         print("-----" * 16)
         print("Performance\n" + "-----" * 16)
-        print(performance_df)
+        # print "quiet" before "noisy"
+        print(performance_df[sorted(performance_df.columns, reverse=True)])
         print("-----" * 16)
         print("Performance Loss (%)\n" + "-----" * 16)
         print(loss_df)

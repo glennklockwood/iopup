@@ -12,6 +12,7 @@ Jobid | Primary Workload  | Secondary Workload | PPN(1) | ppn(2) | Clients | Ste
 43474 | write bw (32 MiB) | write iops         |     32 |    128 |      16 |    2
 43477 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
 43482 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
+43484 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
 
 ### 43477
 
@@ -28,3 +29,8 @@ Job 43477 reflects the ideal primary workload.
 This is a re-run of 43477 using iopup that more flexibly supports running
 primary and/or secondary workloads in isolation before launching the noisy
 one.
+
+### 43477, 43482, 43484
+
+These are the same runs from the file system's perspective but were testing
+new features in iopup.
