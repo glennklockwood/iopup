@@ -1,0 +1,51 @@
+IOR-3.4.0+dev: MPI Coordinated Test of Parallel I/O
+Began               : Wed Apr 13 13:07:22 2022
+Command line        : /global/u2/g/glock/src/iopup/src/ior/bin.muller/ior -D 90 -l random -a posix -F -e -g -vv -C --posix.odirect -w -t 64m -b 1g -s 1024 -o /mscratch/sd/g/glock/ost1/data-primary.43509.out
+Machine             : Linux nid001000 5.3.18-24.96_10.0.194-cray_shasta_c #1 SMP Wed Feb 16 04:24:37 UTC 2022 (50930b5) x86_64
+TestID              : 0
+StartTime           : Wed Apr 13 13:07:22 2022
+Path                : /mscratch/sd/g/glock/ost1/data-primary.43509.out.00000000
+FS                  : 242.5 TiB   Used FS: 10.2%   Inodes: 244.8 Mi   Used Inodes: 17.0%
+Participating tasks : 160
+Using reorderTasks '-C' (useful to avoid read cache in client)
+
+Options: 
+api                 : posix
+apiVersion          : 
+test filename       : /mscratch/sd/g/glock/ost1/data-primary.43509.out
+access              : file-per-process
+type                : independent
+segments            : 1024
+ordering in a file  : sequential
+ordering inter file : constant task offset
+task offset         : 1
+nodes               : 10
+tasks               : 160
+clients per node    : 16
+repetitions         : 1
+xfersize            : 64 MiB
+blocksize           : 1 GiB
+aggregate filesize  : 160 TiB
+verbose             : 2
+stonewallingTime    : 90
+stoneWallingWearOut : 0
+
+Results: 
+Using Time Stamp 1649880442 (0x62572d7a) for Data Signature
+
+access    bw(MiB/s)  IOPS       Latency(s)  block(KiB) xfer(KiB)  open(s)    wr/rd(s)   close(s)   total(s)   iter
+------    ---------  ----       ----------  ---------- ---------  --------   --------   --------   --------   ----
+Commencing write performance test: Wed Apr 13 13:07:22 2022
+WARNING: Expected aggregate file size       = 175921860444160
+WARNING: Stat() of aggregate file size      = 1675775442944
+WARNING: Using actual aggregate bytes moved = 1675775442944
+WARNING: Maybe caused by deadlineForStonewalling
+write     17185      268.66     5.71        1048576    65536      0.048902   92.95      0.001170   93.00      0   
+remove    -          -          -           -          -          -          -          -          0.003280   0   
+Max Write: 17185.00 MiB/sec (18019.78 MB/sec)
+
+Summary of all tests:
+Operation   Max(MiB)   Min(MiB)  Mean(MiB)     StdDev   Max(OPs)   Min(OPs)  Mean(OPs)     StdDev    Mean(s) Stonewall(s) Stonewall(MiB) Test# #Tasks tPN reps fPP reord reordoff reordrand seed segcnt   blksiz    xsize aggs(MiB)   API RefNum
+write       17185.00   17185.00   17185.00       0.00     268.52     268.52     268.52       0.00   92.99644         NA            NA     0    160  16    1   1     1        1         0    0   1024 1073741824 67108864 1598144.0 posix      0
+darshan_library_warning: unable to create log file /pscratch/darshanlogs/2022/4/13/glock_ior_id43509-224648_4-13-47242-12546876807756323818.darshan_partial.
+Finished            : Wed Apr 13 13:08:55 2022

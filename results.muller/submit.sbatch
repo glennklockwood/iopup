@@ -16,5 +16,5 @@ python3 ../../bin/iopup.py \
     --primary-ppn 16 \
     --secondary-ppn 64 \
     --step 2 \
-    --isolate-both \
     $SCRATCH/ost1
+#   --isolate-both \

@@ -13,6 +13,9 @@ Jobid | Primary Workload  | Secondary Workload | PPN(1) | ppn(2) | Clients | Ste
 43477 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
 43482 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
 43484 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
+43507 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
+43508 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
+43509 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
 
 ### 43477
 
@@ -30,7 +33,9 @@ This is a re-run of 43477 using iopup that more flexibly supports running
 primary and/or secondary workloads in isolation before launching the noisy
 one.
 
-### 43477, 43482, 43484
+### 43477, 43482, 43484, 43507, 43508, 43509
 
 These are the same runs from the file system's perspective but were testing
 new features in iopup.
+
+43507 failed one step for a mysterious reason, so it can (should) be discarded.
