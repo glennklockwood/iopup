@@ -610,10 +610,11 @@ def main(argv=None):
     parser.add_argument("-s", "--step", type=int, default=1, help="Step between successive client count tests (default: 1)")
     parser.add_argument("--primary-ppn", type=int, default=None, help="Processes per node for primary workload (default: use --ppn)")
     parser.add_argument("--secondary-ppn", type=int, default=None, help="Processes per node for secondary workload (default: use --ppn)")
+    parser.add_argument("--isolate-both", action="store_true", help="Run both primary and secondary in isolation (default: only run secondary)")
     args = parser.parse_args()
     global MPIRUN_BIN
 
-    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s %(message)s')
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
     config = load_config(args.config)
     MPIRUN_BIN = config.get("mpirun", None)
@@ -621,6 +622,7 @@ def main(argv=None):
     node_list = get_nodes()
     num_nodes = len(node_list)
     node_step = -1 * args.step
+    which = "both" if args.isolate_both else "secondary"
 
     ppn = args.ppn
     if ppn is None:
@@ -637,8 +639,8 @@ def main(argv=None):
         ppn_2 = args.secondary_ppn
 
     for num_primary in range(num_nodes + node_step, 0, node_step):
-        primary_nodes = node_list[:num_primary]
-        secondary_nodes = node_list[num_primary:]
+        nodes_1 = node_list[:num_primary]
+        nodes_2 = node_list[num_primary:]
 
         output_dir_1 = os.path.join(args.output_dir, "data-primary.{}.out".format(os.environ.get("SLURM_JOBID", os.getpid())))
         output_dir_2 = os.path.join(args.output_dir, "data-secondary.{}.out".format(os.environ.get("SLURM_JOBID", os.getpid())))
@@ -648,7 +650,7 @@ def main(argv=None):
         primary = IorLauncher(
             output_dir=output_dir_1,
             config=config,
-            hosts=primary_nodes,
+            hosts=nodes_1,
             ppn=ppn_1,
             timelimit=90,
             random_data=True,
@@ -659,15 +661,16 @@ def main(argv=None):
         secondary = IorLauncher(
             output_dir=output_dir_2,
             config=config,
-            hosts=secondary_nodes,
+            hosts=nodes_2,
             ppn=ppn_2,
             timelimit=45,
             random_data=True,
             test=args.test)
 
         run_interference(
-            dict(launcher=primary, workload="primary", access="write", pattern="bw"),
-            dict(launcher=secondary, workload="secondary", access="write", pattern="iops"),
+            primary=dict(launcher=primary, workload="primary", access="write", pattern="bw"),
+            secondary=dict(launcher=secondary, workload="secondary", access="write", pattern="iops"),
+            which=which,
         )
 
 if __name__ == "__main__":
