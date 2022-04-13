@@ -11,6 +11,9 @@ Jobid | Primary Workload  | Secondary Workload | PPN(1) | ppn(2) | Clients | Ste
 43472 | write bw (32 MiB) | write iops         |     32 |     64 |      16 |    2
 43474 | write bw (32 MiB) | write iops         |     32 |    128 |      16 |    2
 43477 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
+43482 | write bw (64 MiB) | write iops         |     16 |     64 |      16 |    2
+
+### 43477
 
 According to the HPE Lustre Benchmarking Best Practices for ClusterStor E1000
 technical notes,
@@ -19,3 +22,9 @@ technical notes,
 * for buffered I/O, 1 MiB writes are sufficient
 
 Job 43477 reflects the ideal primary workload.
+
+### 43472
+
+This is a re-run of 43477 using iopup that more flexibly supports running
+primary and/or secondary workloads in isolation before launching the noisy
+one.
