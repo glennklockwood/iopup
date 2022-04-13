@@ -13,8 +13,11 @@ mkdir $SLURM_JOBID
 cd $SLURM_JOBID
 python3 ../../bin/iopup.py \
     --config ../config.yml \
+    --isolate-both \
     --primary-ppn 16 \
     --secondary-ppn 64 \
     --step 2 \
+    --primary-timelimit 60 \
+    --secondary-timelimit 60 \
+    --delay 0 \
     $SCRATCH/ost1
-#   --isolate-both \

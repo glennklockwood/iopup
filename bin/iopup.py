@@ -608,9 +608,12 @@ def main(argv=None):
     parser.add_argument("-p", "--ppn", type=int, default=None, help="Processes per node (default: detect)")
     parser.add_argument("-c", "--config", type=str, default="config.yml", help="Path to iopup config.yml")
     parser.add_argument("-s", "--step", type=int, default=1, help="Step between successive client count tests (default: 1)")
+    parser.add_argument("--isolate-both", action="store_true", help="Run both primary and secondary in isolation (default: only run secondary)")
     parser.add_argument("--primary-ppn", type=int, default=None, help="Processes per node for primary workload (default: use --ppn)")
     parser.add_argument("--secondary-ppn", type=int, default=None, help="Processes per node for secondary workload (default: use --ppn)")
-    parser.add_argument("--isolate-both", action="store_true", help="Run both primary and secondary in isolation (default: only run secondary)")
+    parser.add_argument("--primary-timelimit", type=int, default=90,  help="Seconds to run primary workload (default: 90)")
+    parser.add_argument("--secondary-timelimit", type=int, default=45,  help="Seconds to run secondary workload (default: 45)")
+    parser.add_argument("--delay", type=int, default=15, help="Seconds to wait after launching primary before secondary is started (default: 15)")
     args = parser.parse_args()
     global MPIRUN_BIN
 
@@ -652,7 +655,7 @@ def main(argv=None):
             config=config,
             hosts=nodes_1,
             ppn=ppn_1,
-            timelimit=90,
+            timelimit=args.primary_timelimit,
             random_data=True,
             test=args.test)
 
@@ -663,7 +666,7 @@ def main(argv=None):
             config=config,
             hosts=nodes_2,
             ppn=ppn_2,
-            timelimit=45,
+            timelimit=args.secondary_timelimit,
             random_data=True,
             test=args.test)
 
@@ -671,7 +674,7 @@ def main(argv=None):
             primary=dict(launcher=primary, workload="primary", access="write", pattern="bw"),
             secondary=dict(launcher=secondary, workload="secondary", access="write", pattern="iops"),
             which=which,
-        )
+            delay=args.delay)
 
 if __name__ == "__main__":
     main()
