@@ -518,78 +518,19 @@ def run_launchers(*workloads, delay=0):
 
     return results
 
-def run_symmetric_interference(*workloads):
-    """Runs two benchmarks in isolation and then at the same time.
+def run_interference(primary, secondary, delay=15, isolate='s', overwrite=False):
+    """Runs one or two benchmarks in isolation and then at the same time.
 
-    Runs each workload independently, then runs all workloads overlapping.
-    Currently supports only two workloads.
+    The default behavior (``isolate='s'``) runs the secondary workload in
+    isolation, then runs it in the presence of a primary background workload
+    to see how well this secondary workload performs under contention.
 
-    Expects a list of dictionaries of the form::
+    For ``isolate='p'``, the primary workload is the one run in isolation.
 
-        {
-            "launcher": BenchmarkLauncher,
-            "access": "read/write",
-            "pattern": "bw/iops",
-        }
-
-    These input dictionaries are mutated to include more metadata from the
-    environment and launchers.  This function also sets up the appropriate
-    output filenames for each benchmark.
-
-    Args:
-        workloads (list of dict): List of dictionaries that describe a workload
-            and contain the appropriate BenchmarkLauncher.
-    """
-    logger = logging.getLogger(__name__)
-    OUTPUT_FILENAME = "{workload}_{contention}.{pnodes:d}p-{snodes:d}s.{jobid}.out"
-
-    # Initialize labels
-    for workload in workloads:
-        workload["jobid"] = os.environ.get("SLURM_JOBID", str(int(time.time()))) # Slurm-ism
-        workload["nnodes"] = len(workload["launcher"].get_hosts())
-
-    if len(workloads) > 2:
-        raise NotImplementedError("more than two workloads provided")
-
-    # Run workload in isolation
-    for workload in workloads:
-        workload["pnodes"] = workloads[0]["nnodes"]
-        workload["snodes"] = workloads[1]["nnodes"]
-        workload["contention"] = "quiet"
-        logger.info("Launching {contention} {access} {pattern} on {nnodes} {workload} nodes".format(**workload))
-        workload["launcher"].set_stdout(open(OUTPUT_FILENAME.format(**workload), "a"))
-        workload["launcher"].set_stderr(workload["launcher"].get_stdout())
-        timestamps = run_launchers(workload)
-        logger.info("Finished quiet workload; ran from {} to {} ({:.1f} seconds)".format(
-            datetime.datetime.fromtimestamp(timestamps[0][0]),
-            datetime.datetime.fromtimestamp(timestamps[0][1]),
-            timestamps[0][1] - timestamps[0][0]))
-
-    # Set up appropriate labels for noisy workloads
-    for workload in workloads:
-        workload["contention"] = "noisy"
-        logger.info("Launching {contention} {access} {pattern} on {nnodes} {workload} nodes".format(**workload))
-        workload["launcher"].set_stdout(open(OUTPUT_FILENAME.format(**workload), "a"))
-        workload["launcher"].set_stderr(workload["launcher"].get_stdout())
-
-    # Run noisy workloads in parallel
-    timestamps = run_launchers(*workloads)
-    for index, timestamp in enumerate(timestamps):
-        logger.info("Finished noisy workload {}; ran from {} to {} ({:.1f} seconds)".format(
-            index,
-            datetime.datetime.fromtimestamp(timestamp[0]),
-            datetime.datetime.fromtimestamp(timestamp[1]),
-            timestamp[1] - timestamp[0]))
-
-
-def run_interference(primary, secondary, delay=15, isolate='s'):
-    """Runs a secondary benchmark in isolation and against a sustained primary.
-
-    Runs the secondary workload in isolation, then runs it in the presence of a
-    primary background workload to see how well this secondary workload performs
-    under contention.  It is assumed that the primary is a sustained workload
-    whose performance is not of interest; if it is, use
-    run_symmetric_interference().
+    For ``isolate='b'``, both primary and secondary workloads are run in
+    isolation, then at the same time.  In this mode, it is important to set
+    ``delay=0`` so that the "same-time" run does not let the primary work
+    in isolation for the first `delay` seconds.
 
     Expects a list of dictionaries of the form::
 
@@ -611,6 +552,7 @@ def run_interference(primary, secondary, delay=15, isolate='s'):
         isolate (str): "primary" to run the primary in isolation, "secondary" to
             run secondary in isolation, or "both" to run both in isolation
             before running the noisy case.
+        overwrite (bool): Re-run jobs whose output files already exist if True.
     """
     logger = logging.getLogger(__name__)
     OUTPUT_FILENAME = "{workload}_{contention}.{pnodes:d}p-{snodes:d}s.{jobid}.out"
@@ -628,7 +570,8 @@ def run_interference(primary, secondary, delay=15, isolate='s'):
 
     # Initialize labels
     for workload in (primary, secondary):
-        workload["jobid"] = os.environ.get("SLURM_JOBID", str(int(time.time()))) # Slurm-ism
+        if workload.get('jobid') is None:
+            workload["jobid"] = os.environ.get("SLURM_JOBID", str(int(time.time()))) # Slurm-ism
         workload["nnodes"] = len(workload["launcher"].get_hosts())
 
     for workload in (primary, secondary):
@@ -638,8 +581,12 @@ def run_interference(primary, secondary, delay=15, isolate='s'):
     # Run workload(s) in isolation
     for workload in isolated_runs:
         workload["contention"] = "quiet"
+        output_filename = OUTPUT_FILENAME.format(**workload)
+        if os.path.isfile(output_filename) and not overwrite:
+            logger.info("Skipping {contention} {access} {pattern} on {nnodes} {workload} nodes (output exists)".format(**workload))
+            continue
         logger.info("Launching {contention} {access} {pattern} on {nnodes} {workload} nodes".format(**workload))
-        workload["launcher"].set_stdout(open(OUTPUT_FILENAME.format(**workload), "a"))
+        workload["launcher"].set_stdout(open(output_filename, "a"))
         workload["launcher"].set_stderr(workload["launcher"].get_stdout())
         timestamps = run_launchers(workload)
         logger.info("Finished {} workload; ran from {} to {} ({:.1f} seconds)".format(
@@ -649,11 +596,22 @@ def run_interference(primary, secondary, delay=15, isolate='s'):
             timestamps[0][1] - timestamps[0][0]))
 
     # Set up appropriate labels for noisy workloads
+    skip = False
     for workload in (primary, secondary):
         workload["contention"] = "noisy"
+        output_filename = OUTPUT_FILENAME.format(**workload)
+        if skip or (os.path.isfile(output_filename) and not overwrite):
+            logger.info("Skipping {contention} {access} {pattern} on {nnodes} {workload} nodes (output exists)".format(**workload))
+            skip = True
+            continue
         logger.info("Launching {contention} {access} {pattern} on {nnodes} {workload} nodes".format(**workload))
-        workload["launcher"].set_stdout(open(OUTPUT_FILENAME.format(**workload), "a"))
+        workload["launcher"].set_stdout(open(output_filename, "a"))
         workload["launcher"].set_stderr(workload["launcher"].get_stdout())
+
+    # if one or both components of noisy workload have already been run, don't
+    # overwrite any existing output files and don't run any component
+    if skip:
+        return
 
     # Run noisy workloads in parallel
     timestamps = run_launchers(primary, secondary, delay=delay)
@@ -676,6 +634,7 @@ def main(argv=None):
     parser.add_argument("-p", "--ppn", type=int, default=None, help="Processes per node (default: detect)")
     parser.add_argument("-c", "--config", type=str, default="config.yml", help="Path to iopup config.yml")
     parser.add_argument("-s", "--step", type=int, default=1, help="Step between successive client count tests (default: 1)")
+    parser.add_argument("-j", "--jobid", type=str, default=None, help="Jobid for this job; used to label output files (default: detect)")
     parser.add_argument("--isolate-both", action="store_true", help="Run both primary and secondary in isolation (default: only run secondary)")
     parser.add_argument("--primary-ppn", type=int, default=None, help="Processes per node for primary workload (default: use --ppn)")
     parser.add_argument("--secondary-ppn", type=int, default=None, help="Processes per node for secondary workload (default: use --ppn)")
@@ -745,8 +704,18 @@ def main(argv=None):
             test=args.test)
 
         run_interference(
-            primary=dict(launcher=primary, workload="primary", access=args.primary_access, pattern=args.primary_pattern),
-            secondary=dict(launcher=secondary, workload="secondary", access=args.secondary_access, pattern=args.secondary_pattern),
+            primary=dict(
+                launcher=primary,
+                workload="primary",
+                access=args.primary_access,
+                pattern=args.primary_pattern,
+                jobid=args.jobid),
+            secondary=dict(
+                launcher=secondary,
+                workload="secondary",
+                access=args.secondary_access,
+                pattern=args.secondary_pattern,
+                jobid=args.jobid),
             isolate=isolate,
             delay=args.delay)
 
