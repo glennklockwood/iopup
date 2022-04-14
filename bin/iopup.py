@@ -105,7 +105,7 @@ class BenchmarkLauncher():
         self._access_args = self._config[key]['access_args'].copy()
         self._pattern_args = self._config[key]['pattern_args'].copy()
         self._access_pattern_args = self._config[key].get('access_pattern_args', {}).copy()
-        self._random_data_args = self._config[key]['random_data_args'].strip().split()
+        self._random_data_args = self._config[key].get('random_data_args', "").strip().split()
         self._timelimit_args = self._config[key]['timelimit_args'].strip().split()
 
         for access in self._access_args:
@@ -668,7 +668,7 @@ def main(argv=None):
     WORKLOADS = {
         "ior": IorLauncher,
         "elbencho": ElbenchoLauncher,
-        "mdworkbench": MdworkbenchLauncher,
+        "md-workbench": MdworkbenchLauncher,
     }
     parser = argparse.ArgumentParser()
     parser.add_argument("output_dir", type=str, help="Perform I/O in this directory")
