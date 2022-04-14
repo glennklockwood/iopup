@@ -388,6 +388,69 @@ class IorLauncher(BenchmarkLauncher):
             # IOR doesn't support multiple output dirs, so just take the first
             self._cmdline += ["-o", self._output_dir[0]]
 
+class MdworkbenchLauncher(BenchmarkLauncher):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self._init_args("md-workbench")
+
+        self._prepend_cmdline = [
+            MPIRUN_BIN,
+            "-N", str(len(self._hosts)),
+            "-n", str(len(self._hosts) * self._ppn),
+        ]
+
+    def _add_hosts(self):
+        if self._hosts is not None:
+            if self._cmdline[0] == MPIRUN_BIN:
+                self._cmdline.insert(1, "--nodelist") # Slurm-ism
+                self._cmdline.insert(2, ",".join(self._hosts))
+            else:
+                raise ValueError(f"Can't find {MPIRUN_BIN} to insert nodelist")
+
+    def _add_output_dir(self):
+        if self._output_dir:
+            self._cmdline += ["-o", self._output_dir[0]]
+
+    def preflight(self, *args, **kwargs):
+        self._logger.info("Launching preflight")
+        self._cmdline = [
+            MPIRUN_BIN,
+            "-N", str(len(self._hosts)), # Slurm-ism
+            "-n", str(len(self._hosts)), # Slurm-ism
+            "--nodelist",                # Slurm-ism
+            ",".join(self._hosts),       # Slurm-ism
+            self._binary,
+            "-1",
+        ]
+        self._cmdline += self._common_args
+        self._logger.info(" ".join(self._cmdline))
+        if self._test:
+            return None
+        pservice = subprocess.Popen(self._cmdline, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        self._cmdline = []
+        return pservice
+
+    def teardown(self, access, pattern, *args, **kwargs):
+        self._logger.info("Launching teardown - file cleanup")
+        self._cmdline = [
+            MPIRUN_BIN,
+            "-N", str(len(self._hosts)), # Slurm-ism
+            "-n", str(len(self._hosts)), # Slurm-ism
+            "--nodelist",                # Slurm-ism
+            ",".join(self._hosts),       # Slurm-ism
+            self._binary,
+            "-3",
+        ]
+        self._cmdline += self._common_args
+        self._logger.info(" ".join(self._cmdline))
+        if self._test:
+            return None
+        pservice = subprocess.Popen(self._cmdline, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        self._cmdline = []
+        time.sleep(5)
+        return pservice
+
 def get_nodes():
     if os.environ.get("SLURM_JOB_NODELIST"):
         return subprocess.check_output([
@@ -519,7 +582,7 @@ def run_symmetric_interference(*workloads):
             timestamp[1] - timestamp[0]))
 
 
-def run_interference(primary, secondary, delay=15, which='s'):
+def run_interference(primary, secondary, delay=15, isolate='s'):
     """Runs a secondary benchmark in isolation and against a sustained primary.
 
     Runs the secondary workload in isolation, then runs it in the presence of a
@@ -545,23 +608,23 @@ def run_interference(primary, secondary, delay=15, which='s'):
         secondary (dict): Description of the secondary (probe) workload.
         delay (int): Seconds to wait after launching the primary workload before
             secondary workload is started.
-        which (str): "primary" to run the primary in isolation, "secondary" to
+        isolate (str): "primary" to run the primary in isolation, "secondary" to
             run secondary in isolation, or "both" to run both in isolation
             before running the noisy case.
     """
     logger = logging.getLogger(__name__)
     OUTPUT_FILENAME = "{workload}_{contention}.{pnodes:d}p-{snodes:d}s.{jobid}.out"
 
-    which = which.lower()[0]
+    isolate = isolate.lower()[0]
     isolated_runs = None
-    if which == 'b':
+    if isolate == 'b':
         isolated_runs = [primary, secondary]
-    elif which == 'p':
+    elif isolate == 'p':
         isolated_runs = [primary]
-    elif which == 's':
+    elif isolate == 's':
         isolated_runs = [secondary]
     if isolated_runs is None:
-        raise ValueError("which must be one of primary secondary both")
+        raise ValueError("isolate must be one of: primary secondary both")
 
     # Initialize labels
     for workload in (primary, secondary):
@@ -602,6 +665,11 @@ def run_interference(primary, secondary, delay=15, which='s'):
             timestamp[1] - timestamp[0]))
 
 def main(argv=None):
+    WORKLOADS = {
+        "ior": IorLauncher,
+        "elbencho": ElbenchoLauncher,
+        "mdworkbench": MdworkbenchLauncher,
+    }
     parser = argparse.ArgumentParser()
     parser.add_argument("output_dir", type=str, help="Perform I/O in this directory")
     parser.add_argument("-t", "--test", action="store_true", help="Don't actually run jobs (dry run)")
@@ -613,6 +681,12 @@ def main(argv=None):
     parser.add_argument("--secondary-ppn", type=int, default=None, help="Processes per node for secondary workload (default: use --ppn)")
     parser.add_argument("--primary-timelimit", type=int, default=90,  help="Seconds to run primary workload (default: 90)")
     parser.add_argument("--secondary-timelimit", type=int, default=45,  help="Seconds to run secondary workload (default: 45)")
+    parser.add_argument("--primary-workload", type=str, default="ior", help="Primary workload: (default: ior)".format(" ".join(list(WORKLOADS.keys()))))
+    parser.add_argument("--secondary-workload", type=str, default="ior", help="Secondary workload: (default: ior)".format(" ".join(list(WORKLOADS.keys()))))
+    parser.add_argument("--primary-access", type=str, default="write", help="Primary access mode: (default: write)")
+    parser.add_argument("--secondary-access", type=str, default="write", help="Secondary access mode: (default: write)".format(" ".join(list(WORKLOADS.keys()))))
+    parser.add_argument("--primary-pattern", type=str, default="bw", help="Primary I/O pattern: (default: bw)")
+    parser.add_argument("--secondary-pattern", type=str, default="iops", help="Primary I/O pattern: (default: iops)")
     parser.add_argument("--delay", type=int, default=15, help="Seconds to wait after launching primary before secondary is started (default: 15)")
     args = parser.parse_args()
     global MPIRUN_BIN
@@ -625,21 +699,25 @@ def main(argv=None):
     node_list = get_nodes()
     num_nodes = len(node_list)
     node_step = -1 * args.step
-    which = "both" if args.isolate_both else "secondary"
+    isolate = "both" if args.isolate_both else "secondary"
 
+    # PPN selection
     ppn = args.ppn
     if ppn is None:
         slurm_ntasks = os.environ.get("SLURM_NTASKS")           # Slurm-ism
         slurm_nnodes = os.environ.get("SLURM_JOB_NUM_NODES")    # Slurm-ism
         if slurm_ntasks and slurm_nnodes:                       # Slurm-ism
             ppn = int(slurm_ntasks) // int(slurm_nnodes)        # Slurm-ism
-
     ppn_1 = ppn
     ppn_2 = ppn
     if args.primary_ppn is not None:
         ppn_1 = args.primary_ppn
     if args.secondary_ppn is not None:
         ppn_2 = args.secondary_ppn
+
+    # Workload selection
+    workload_1 = WORKLOADS[args.primary_workload]
+    workload_2 = WORKLOADS[args.secondary_workload]
 
     for num_primary in range(num_nodes + node_step, 0, node_step):
         nodes_1 = node_list[:num_primary]
@@ -648,9 +726,7 @@ def main(argv=None):
         output_dir_1 = os.path.join(args.output_dir, "data-primary.{}.out".format(os.environ.get("SLURM_JOBID", os.getpid())))
         output_dir_2 = os.path.join(args.output_dir, "data-secondary.{}.out".format(os.environ.get("SLURM_JOBID", os.getpid())))
 
-#       primary = ElbenchoLauncher(
-#           output_dir="/vast/glock",
-        primary = IorLauncher(
+        primary = workload_1(
             output_dir=output_dir_1,
             config=config,
             hosts=nodes_1,
@@ -659,9 +735,7 @@ def main(argv=None):
             random_data=True,
             test=args.test)
 
-#       secondary = ElbenchoLauncher(
-#           output_dir="/vast/glock",
-        secondary = IorLauncher(
+        secondary = workload_2(
             output_dir=output_dir_2,
             config=config,
             hosts=nodes_2,
@@ -671,9 +745,9 @@ def main(argv=None):
             test=args.test)
 
         run_interference(
-            primary=dict(launcher=primary, workload="primary", access="write", pattern="bw"),
-            secondary=dict(launcher=secondary, workload="secondary", access="write", pattern="iops"),
-            which=which,
+            primary=dict(launcher=primary, workload="primary", access=args.primary_access, pattern=args.primary_pattern),
+            secondary=dict(launcher=secondary, workload="secondary", access=args.secondary_access, pattern=args.secondary_pattern),
+            isolate=isolate,
             delay=args.delay)
 
 if __name__ == "__main__":

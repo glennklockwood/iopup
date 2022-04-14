@@ -26,3 +26,11 @@ ior:
         iops:   "-t 4k -b 1g -s 1024 -z"
     random_data_args: "-l random"
     timelimit_args: "-D"
+mdworkbench:
+    binary: "/global/u2/g/glock/src/iopup/src/ior/bin.muller/md-workbench"
+    common_args: "-O 0 -R 1 -D 25 -I 1000 -v -S 0"
+    access_args:
+        create:  "-2"
+    pattern_args:
+        default: ""
+    timelimit_args: "-w"
